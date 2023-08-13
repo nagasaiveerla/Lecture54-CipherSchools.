@@ -1,0 +1,93 @@
+import java.util.PriorityQueue;
+import java.util.*;
+public class InbuiltClassStudy{
+    public static void main(String args[]){
+        PriorityQueue<integer> pq = new PriorityQueue<integer>();
+        System.out.println(pq.isEmpty());
+        //by dafalult this gives us a min priority queue
+        pq.add(3);
+        pq.add(4);
+        pq.add(1);
+        pq.add(9);
+        pq.add(6);
+        pq.add(3);
+        System.out.println(pq.isEmpty());
+        System.out.println(pq.peek());
+        System.out.println(pq.poll());
+        System.out.println(pq.poll());
+        System.out.println(pq.size());
+    }
+}
+
+
+package priorityQueueAndHeaps;
+
+ class PQArray{
+     final int size = 10;
+     int arr[] = new int[size];
+     int nItems = 0;//number of items in the pq at any particular time
+     void add(int data)
+     {
+       if(isEmpty())
+       {
+           arr[0] = data;
+           nItems++;
+           return;
+       }
+       for(int i=nItems-1;i>=0;i++)
+       {
+           if(data<arr[i])
+           {
+               arr[i+1] = arr[i];
+           }
+           else{
+               //found the smaller element
+               arr[i+1] = data;
+               break;
+           }
+       }
+       nItems++;//we need to tell that we have stored a new element
+     }
+     int poll()
+     {
+//      int temp = arr[nItems-1];
+//      nItems = nItems-1;
+//      return temp;
+         return arr[nItems],nItems= nItems-1;
+         return arr[nItems];
+         //this will -> first decrease nitems, nitems = nitems-1;return arr[nitemse-1];
+
+     }
+     int peek()
+     {
+         if(isEmpty())return -1;
+         return arr[nItems-1];
+     }
+     boolean isEmpty(){
+         return nItems==0;
+     }
+     int size()
+     {
+         return nItems;
+     }
+
+ }
+ public class newArray{
+     public static void main(String args[])
+     {
+         PQArray pq = new PQArray();
+         System.out.println(pq.isEmpty());
+         pq.add(3);
+         pq.add(4);
+         pq.add(1);
+         pq.add(9);
+         pq.add(7);
+         pq.add(6);
+         System.out.println(pq.isEmpty());
+         System.out.println(pq.peek());
+         System.out.println(pq.poll());
+         System.out.println(pq.poll());
+         System.out.println(pq.size());
+
+     }
+ }
